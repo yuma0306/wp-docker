@@ -4,7 +4,6 @@ services:
     image: mysql:8.0
     volumes:
       - db_data:/var/lib/mysql
-    container_name: mysql8
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password # rootユーザのパスワード
@@ -13,7 +12,6 @@ services:
       MYSQL_PASSWORD: password # WordPress用データベース接続パスワード
   wordpress:
     image: wordpress:latest
-    container_name: wordpress
     restart: always
     depends_on:
       - db
@@ -30,7 +28,6 @@ services:
   phpmyadmin:
     platform: linux/x86_64 # Mac対応
     image: phpmyadmin/phpmyadmin:latest
-    container_name: phpmyadmin_ingrid
     restart: always
     environment:
       PMA_HOST: db # phpMyAdminが接続するMySQLデータベースのホストを指定
