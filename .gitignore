@@ -1,0 +1,25 @@
+/*
+
+# theme
+!/html/
+/html/*
+!/html/wp-content/
+/html/wp-content/*
+/html/wp-content/.htaccess
+!/html/wp-content/themes/
+/html/wp-content/themes/*
+!/html/wp-content/themes/wp-template/
+
+# .htaccess
+!.htaccess
+
+# gulp
+!/src
+!gulpfile.js
+!package.json
+
+# ignore
+!.gitignore
+
+# docker
+!docker-compose.yml

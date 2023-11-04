@@ -1,0 +1,49 @@
+version: "3.7"
+services:
+  db:
+    image: mysql:8.0
+    volumes:
+      - db_data:/var/lib/mysql
+    container_name: mysql8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password # rootユーザのパスワード
+      MYSQL_DATABASE: db_local # WordPress用データベース名
+      MYSQL_USER: wp_user # WordPress用データベース接続ユーザ名
+      MYSQL_PASSWORD: password # WordPress用データベース接続パスワード
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: db:3306 # データベースサーバ名：ポート番号
+      WORDPRESS_DB_USER: wp_user # WordPress用データベース接続ユーザ名(dbの内容に合わせる)
+      WORDPRESS_DB_PASSWORD: password # WordPress用データベース接続パスワード(dbの内容に合わせる)
+      WORDPRESS_DB_NAME: db_local # WordPress用データベース名(dbの内容に合わせる)
+      WORDPRESS_DEBUG: 1 # デバッグモードON
+    volumes:
+      - ./html:/var/www/html
+  phpmyadmin:
+    platform: linux/x86_64 # Mac対応
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin_ingrid
+    restart: always
+    environment:
+      PMA_HOST: db # phpMyAdminが接続するMySQLデータベースのホストを指定
+      MYSQL_ROOT_PASSWORD: password
+      MEMORY_LIMIT: 128M
+      UPLOAD_LIMIT: 100M
+    depends_on:
+      - db
+    ports:
+      - 8080:80
+volumes:
+    wordpress:
+    db_data:
+networks:
+  mysite:
+    driver: bridge
