@@ -1,0 +1,12 @@
+@use '../../config/import' as *;
+
+@mixin pc {
+    @media screen and (min-width: $mediaPc) {
+        @content;
+    }
+}
+@mixin sp {
+    @media screen and (max-width: $mediaSp) {
+        @content;
+    }
+}

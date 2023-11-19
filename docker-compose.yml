@@ -7,8 +7,8 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password # rootユーザのパスワード
-      MYSQL_DATABASE: db_local # WordPress用データベース名
-      MYSQL_USER: wp_user # WordPress用データベース接続ユーザ名
+      MYSQL_DATABASE: local # WordPress用データベース名
+      MYSQL_USER: user # WordPress用データベース接続ユーザ名
       MYSQL_PASSWORD: password # WordPress用データベース接続パスワード
   wordpress:
     image: wordpress:latest
@@ -19,9 +19,10 @@ services:
       - 80:80
     environment:
       WORDPRESS_DB_HOST: db:3306 # データベースサーバ名：ポート番号
-      WORDPRESS_DB_USER: wp_user # WordPress用データベース接続ユーザ名(dbの内容に合わせる)
+      WORDPRESS_DB_USER: user # WordPress用データベース接続ユーザ名(dbの内容に合わせる)
       WORDPRESS_DB_PASSWORD: password # WordPress用データベース接続パスワード(dbの内容に合わせる)
-      WORDPRESS_DB_NAME: db_local # WordPress用データベース名(dbの内容に合わせる)
+      WORDPRESS_DB_NAME: local # WordPress用データベース名(dbの内容に合わせる)
+      WORDPRESS_TABLE_PREFIX: wp1_ # table prefix
       WORDPRESS_DEBUG: 1 # デバッグモードON
     volumes:
       - ./html:/var/www/html

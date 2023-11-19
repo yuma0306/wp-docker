@@ -1,0 +1,18 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.inner {
+		margin: 0 auto;
+		width: vwMin(1000);
+		&--lg {
+			width: vwMin(1100);
+		}
+	}
+}
+
+@include sp {
+	.inner {
+		margin: 0 vw(10);
+	}
+}

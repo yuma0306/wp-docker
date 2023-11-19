@@ -60,8 +60,8 @@ function removeMenus(){
     // remove_menu_page('themes.php'); //外観
     // remove_menu_page('plugins.php'); //プラグイン
     // remove_menu_page('users.php'); //ユーザー
-    // remove_menu_page('tools.php'); //ツールメニュー 
-    // remove_menu_page('options-general.php'); //設定 
+    // remove_menu_page('tools.php'); //ツールメニュー
+    // remove_menu_page('options-general.php'); //設定
 }
 add_action('admin_menu', 'removeMenus');
 
@@ -74,3 +74,10 @@ function updateNagAdminOnly() {
     }
 }
 add_action('admin_init', 'updateNagAdminonly');
+
+function customMenuPos() {
+	global $menu;
+	$menu[19] = $menu[10];
+	unset($menu[10]);
+}
+add_action('admin_menu', 'customMenuPos');

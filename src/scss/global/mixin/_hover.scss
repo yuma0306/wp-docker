@@ -1,0 +1,8 @@
+@use '../../config/import' as *;
+
+@mixin hoverOpacity() {
+	transition: opacity $transitionShort;
+	&:hover {
+		opacity: .8;
+	}
+}

@@ -1,0 +1,42 @@
+@use '../global/import' as *;
+@use '../config/import' as *;
+
+@include pc {
+	.title02 {
+		position: relative;
+		width: fit-content;
+		margin: 0 auto vwMin(60);
+		font-size: vwMin(30);
+		font-weight: 700;
+		&::before {
+			position: absolute;
+			left: 50%;
+			bottom: vwMin(-20);
+			transform: translate(-50%, 0);
+			width: vwMin(50);
+			height: vwMin(4);
+			background-color: $black01;
+			content: "";
+		}
+	}
+}
+
+@include sp {
+	.title02 {
+		position: relative;
+		width: fit-content;
+		margin: 0 auto vw(45);
+		font-size: vw(28);
+		font-weight: 700;
+		&::before {
+			position: absolute;
+			left: 50%;
+			bottom: vw(-15);
+			transform: translate(-50%, 0);
+			width: vw(50);
+			height: vw(4);
+			background-color: $black01;
+			content: '';
+		}
+	}
+}

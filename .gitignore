@@ -18,6 +18,9 @@
 !gulpfile.js
 !package.json
 
+# editor
+!.editorconfig
+
 # ignore
 !.gitignore
 

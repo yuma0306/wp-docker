@@ -1,0 +1,29 @@
+@use '../global/import' as *;
+
+.none {
+	display: none;
+}
+
+@include pc {
+    .block-pc {
+		display: block;
+	}
+	.i-block-pc {
+		display: inline-block;
+	}
+    .none-sp {
+		display: none;
+	}
+}
+
+@include sp {
+	.block-sp {
+		display: block;
+	}
+	.i-block-sp {
+		display: inline-block;
+	}
+	.none-pc {
+		display: none;
+	}
+}
